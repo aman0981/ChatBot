@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ChatBot</string>
+    <string name="ex1">"Write an essay on Pollution"</string>
+    <string name="ex2">"Write  Java code to reverse a given number" </string>
+    <string name="ex3">"Give creative ideas for a birthday celebration" </string>
+    <string name="cap1">Remembers what user said earlier in conversation</string>
+    <string name="cap2">Allows user to provide follow-up corrections</string>
+    <string name="cap3">Trained to decline inappropriate requests</string>
+    <string name="limit1">May occasionally generate incorrect information</string>
+    <string name="limit2">May occasionally produce biased content</string>
+    <string name="limit3">Limited knowledge of world and events after 2021</string>
+    <string name="OpenDrawer">Open Navigation Drawer</string>
+    <string name="CloseDrawer">Close Navigation Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
