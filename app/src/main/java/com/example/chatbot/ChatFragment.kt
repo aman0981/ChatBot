@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -21,17 +23,20 @@ import com.android.volley.RetryPolicy
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.chatbot.model.Message
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
 import org.json.JSONObject
 
 
 class ChatFragment : Fragment() {
 
 
-    lateinit var  queryEdt: TextView
-    lateinit var  messageRV: RecyclerView
-    lateinit var  messageAdapter: MessageAdapter
-    lateinit var messageList: ArrayList<MessageViewModel>
-    var url ="https://api.openai.com/v1/completions"
+    lateinit var  edtText: TextInputEditText
+    lateinit var  recyclerView: RecyclerView
+    lateinit var messageViewModel: MessageViewModel
+    lateinit var send_btn: ImageButton
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,75 +56,49 @@ class ChatFragment : Fragment() {
             .setupWithNavController(navController, appBarConfiguration)
 
 
-        queryEdt = view.findViewById(R.id.edtText)
-        messageRV = view.findViewById(R.id.recyclerChat)
-        messageList = ArrayList()
-        messageAdapter= MessageAdapter(messageList)
+        edtText = view.findViewById(R.id.edtText)
+        recyclerView = view.findViewById(R.id.recyclerChat)
+        send_btn = view.findViewById(R.id.send_btn)
+
+        messageViewModel = ViewModelProvider(this)[MessageViewModel::class.java]
         val layoutManager = LinearLayoutManager(requireContext())
-        messageRV.layoutManager= layoutManager
-        messageRV.adapter = messageAdapter
 
-        queryEdt.setOnEditorActionListener(TextView.OnEditorActionListener{ textView, i, keyEvent ->
-            if( i == EditorInfo.IME_ACTION_SEND) {
-                if(queryEdt.text.toString().length > 0){
-                    messageList.add(MessageViewModel(queryEdt.text.toString(), "user"))
-                    messageAdapter.notifyDataSetChanged()
-                    getResponse(queryEdt.text.toString())
-                }else{
-                    Toast.makeText(requireContext(), "Please enter your Query..", Toast.LENGTH_SHORT).show()
-                }
+        recyclerView.layoutManager= layoutManager
 
-                return@OnEditorActionListener true
-            }
-            false
-        })
-    }
 
-    private fun getResponse(query: String){
-        queryEdt.setText("")
-        val queue: RequestQueue = Volley.newRequestQueue(requireContext())
-        val jsonObject: JSONObject? = JSONObject()
-        jsonObject?.put("model","text-davinci-003")
-        jsonObject?.put("prompt",query)
-        jsonObject?.put("temperature",0)
-        jsonObject?.put("max_tokens",100)
-        jsonObject?.put("top_p", 1)
-        jsonObject?.put("frequency_penalty", 0.0)
-        jsonObject?.put("presence_penalty",0.0)
+        messageViewModel.messageList.observe(viewLifecycleOwner){messages ->
+            val adapter = MessageAdapter(messages)
+            recyclerView.adapter = adapter
 
-        val postRequest: JsonObjectRequest =
-            @SuppressLint("NotifyDataSetChanged")
-            object: JsonObjectRequest(Method.POST, url, jsonObject, Response.Listener{ response ->
-                val  responseMsg: String= response.getJSONArray("choices").getJSONObject(0).getString("text")
-                messageList.add(MessageViewModel(responseMsg,"bot"))
-                messageAdapter.notifyDataSetChanged()
-
-        },  Response.ErrorListener{
-            Toast.makeText(requireActivity(), "Fail to get response..", Toast.LENGTH_SHORT).show()
-            }){
-                override fun getHeaders(): MutableMap<String, String>
-                {
-                    val params: MutableMap<String,String> = HashMap()
-                    params["Content-Type"] = "application/json"
-                    params["Authorization"] = " Bearer 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"
-                    return params
+            recyclerView.post {
+                messageViewModel._messageList.value?.size?.let { size ->
+                    if (size > 0) {
+                        recyclerView.smoothScrollToPosition(size - 1)
+                    }
                 }
             }
 
-        postRequest.setRetryPolicy(object: RetryPolicy {
-            override fun getCurrentTimeout(): Int {
-                return 50000
+        }
+
+
+        send_btn.setOnClickListener {
+            if(edtText.text!!.isEmpty()){
+                Toast.makeText(requireContext(),"Please write your Question",Toast.LENGTH_SHORT).show()
+            }
+            else {
+                val question = edtText.text.toString()
+                messageViewModel.addToChat(
+                    question,
+                    Message.SENT_BY_ME,
+                    messageViewModel.getCurrentTimestamp()
+                )
+                edtText.setText("")
+                messageViewModel.callApi(question)
             }
 
-            override fun getCurrentRetryCount(): Int {
-                return 50000
-            }
 
-            override fun retry(error: VolleyError?) {
-
-            }
-        })
-
-        queue.add(postRequest)
+        }
     }
+
+
 }

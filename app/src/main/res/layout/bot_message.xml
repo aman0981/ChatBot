@@ -9,9 +9,12 @@
     >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         app:cardElevation="0dp"
+        android:layout_marginRight="12dp"
+        android:backgroundTint="#84B0D3"
         app:cardCornerRadius="12dp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true">
@@ -19,7 +22,7 @@
 
         <TextView
             android:id="@+id/bot"
-            android:layout_width="132dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:maxWidth="260dp"
@@ -29,5 +32,14 @@
             android:textSize="18sp" />
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/left_chat_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardView"
+        android:layout_marginTop="8dp"
+        android:textSize="17sp"
+        android:textColor="#EDBFBF"/>
 
 </RelativeLayout>

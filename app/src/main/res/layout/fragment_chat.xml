@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_1"
     tools:context=".ChatFragment">
 
 
@@ -12,48 +12,72 @@
         android:id="@+id/recyclerChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="70dp"
         android:layout_weight="1" />
 
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#938B8B"
-        android:layout_gravity="bottom"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+        android:layout_gravity="bottom">
 
-        <RelativeLayout
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/input"
+            style="@style/TextinputLayoutStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:hint="Enter your query"
+            android:padding="5dp"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtText"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginBottom="12dp"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ImageButton
+            android:id="@+id/send_btn"
+            android:layout_width="75dp"
+            android:layout_height="64dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="#4E90C5"
+            android:src="@drawable/send" />
+
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|enterAlways">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="18dp"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:text="New Chat"
+            android:textAlignment="center"
+            android:textColor="#F1F3EF"
+            android:textSize="29sp"
 
-            <EditText
-                android:id="@+id/edtText"
-                android:layout_width="320dp"
-                android:layout_height="48dp"
-                android:ems="14"
-                android:hint="Send a message.."
-                android:layout_marginTop="10dp"
-                android:inputType="text"
-                />
-
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/edtText"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/ic_baseline_send_24"
-                />
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
 
 </FrameLayout>
 
