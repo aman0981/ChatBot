@@ -1,5 +1,6 @@
 package com.example.chatbot
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,7 +37,6 @@ class HomeFragment : Fragment() {
         val new_chat = requireView().findViewById<FloatingActionButton>(R.id.new_chat)
 
         new_chat.setOnClickListener {
-//                val action= introFragmentDirections.actionIntroFragmentToChatFragment()
             findNavController().navigate(R.id.chatFragment)
         }
 
@@ -63,10 +63,26 @@ class HomeFragment : Fragment() {
                     navController.navigate(R.id.aboutFragment)
                 }
 
+                R.id.share -> {
+                   shareApp()
+                }
 
 
             }
             true
+        }
+
+    }
+
+    private fun shareApp() {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this app!")
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "https://github.com/aman0981/ChatBot")
+
+        val chooserIntent = Intent.createChooser(shareIntent, "Share via")
+        if (shareIntent.resolveActivity(requireContext().packageManager) != null) {
+            startActivity(chooserIntent)
         }
     }
 }
