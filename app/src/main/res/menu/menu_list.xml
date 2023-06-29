@@ -6,14 +6,17 @@
 
 
     <item
-        android:id="@+id/saved_chats"
-        android:title="Saved Chats"
+        android:id="@+id/add_chat"
+        android:title="New Chat"
         android:icon="@drawable/ic_save"/>
 
     <item
         android:id="@+id/about"
         android:title="About"
         android:icon="@drawable/help_faqs"/>
+
+
+
 
     <item
         android:id="@+id/share"

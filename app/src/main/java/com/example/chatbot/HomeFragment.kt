@@ -68,6 +68,10 @@ class HomeFragment : Fragment() {
                 }
 
 
+
+                R.id.add_chat -> {
+                    navController.navigate(R.id.chatFragment)
+                }
             }
             true
         }

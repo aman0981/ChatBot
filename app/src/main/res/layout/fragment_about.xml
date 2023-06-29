@@ -1,176 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_1"
     tools:context=".AboutFragment">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="52dp">
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="229dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
-        android:backgroundTint="#938B8B"
-        app:cardUseCompatPadding="true">
-
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/example"
-                android:layout_marginTop="12dp"/>
+                app:tint="@color/yellow" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Examples"
-                android:textSize="29sp"
                 android:layout_marginBottom="24dp"
+                android:text="Examples"
+                android:textColor="@color/black"
+                android:textSize="29sp"
                 android:textStyle="bold|italic" />
 
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="53dp"
                 android:text="@string/ex1"
-                android:textSize="15sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ex2"
-                android:textSize="15sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ex3"
-                android:textSize="15sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="229dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
-        android:backgroundTint="#938B8B"
-        app:cardUseCompatPadding="true">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/ic_outline_offline_bolt_24"
-                android:layout_marginTop="12dp"/>
+                app:tint="@color/yellow" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Capabilities"
-                android:textSize="29sp"
                 android:layout_marginBottom="24dp"
+                android:text="Capabilities"
+                android:textColor="@color/black"
+                android:textSize="29sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cap1"
-                android:textSize="15sp"/>
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cap2"
-                android:textSize="15sp"/>
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cap3"
-                android:textSize="15sp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-    <androidx.cardview.widget.CardView
-
-        android:layout_width="match_parent"
-        android:layout_height="229dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
-        android:backgroundTint="#938B8B"
-        app:cardUseCompatPadding="true">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/ic_outline_warning_24"
-                android:layout_marginTop="12dp"/>
+                app:tint="@color/yellow" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Limitations"
-                android:textSize="29sp"
                 android:layout_marginBottom="24dp"
+                android:text="Limitations"
+                android:textColor="@color/black"
+                android:textSize="29sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/limit1"
-                android:textSize="15sp"/>
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/limit2"
-                android:textSize="15sp"/>
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/limit3"
-                android:textSize="15sp"/>
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </androidx.core.widget.NestedScrollView>
 
-
-
-    </LinearLayout>
-
-    <include
-        layout="@layout/toolbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="60dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|enterAlways">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:textAlignment="center"
+            android:textColor="#F1F3EF"
+            android:textSize="29sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
 
 </FrameLayout>

@@ -1,13 +1,10 @@
 package com.example.chatbot
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -17,16 +14,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.RetryPolicy
-import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
+
+
 import com.example.chatbot.model.Message
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
-import org.json.JSONObject
 
 
 class ChatFragment : Fragment() {
@@ -36,6 +27,8 @@ class ChatFragment : Fragment() {
     lateinit var  recyclerView: RecyclerView
     lateinit var messageViewModel: MessageViewModel
     lateinit var send_btn: ImageButton
+
+
 
 
     override fun onCreateView(
@@ -66,6 +59,9 @@ class ChatFragment : Fragment() {
         recyclerView.layoutManager= layoutManager
 
 
+
+
+
         messageViewModel.messageList.observe(viewLifecycleOwner){messages ->
             val adapter = MessageAdapter(messages)
             recyclerView.adapter = adapter
@@ -94,7 +90,10 @@ class ChatFragment : Fragment() {
                 )
                 edtText.setText("")
                 messageViewModel.callApi(question)
+
+
             }
+
 
 
         }

@@ -22,7 +22,7 @@
         android:layout_above="@+id/splash_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:textColor="#3E3E3C"
+        android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -35,7 +35,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
-            android:text="Ask Anything"
+            android:text="@string/splash_text"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
 

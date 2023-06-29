@@ -15,8 +15,12 @@
 
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
+
     <style name= "TextinputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">#E1E8EC</item>
+        <item name="boxStrokeColor">#0E0E0E</item>
         <item name="boxStrokeWidth"> 1dp </item>
     </style>
+
+
+
 </resources>

@@ -1,15 +1,20 @@
 package com.example.chatbot
 
+import android.app.Application
+
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.chatbot.data.ApiClient
+
 import com.example.chatbot.model.CompletionRequest
 import com.example.chatbot.model.CompletionResponse
 import com.example.chatbot.model.Message
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.net.SocketTimeoutException
@@ -17,7 +22,8 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class MessageViewModel : ViewModel(){
+
+class MessageViewModel (application: Application): AndroidViewModel(application){
 
 
     val _messageList = MutableLiveData<MutableList<Message>>()
@@ -26,6 +32,10 @@ class MessageViewModel : ViewModel(){
     init {
         _messageList.value = mutableListOf()
     }
+
+
+
+
 
     fun addToChat(message : String , sentBy : String , timestamp : String){
         val currentList = _messageList.value ?: mutableListOf()

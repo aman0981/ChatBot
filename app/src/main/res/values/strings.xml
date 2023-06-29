@@ -13,4 +13,8 @@
     <string name="CloseDrawer">Close Navigation Drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hello_text">Hello, I am Your Intelligent Companion</string>
+    <string name="splash_text">Ask Me Anything</string>
+    <string name="about">"Welcome to my ChatBot App! My chatbot is designed to provide quick and convenient assistance to users. Its purpose is to simplify information retrieval and streamline basic tasks. With my chatbot, you can:                                                       Get Instant Answers , Find Information Easily and it is available 24/7, ensuring that you can access assistance whenever you need it. </string>
 </resources>
