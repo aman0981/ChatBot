@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/edit_text_rounded_corner"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/teal_200">
+
+        <TextView
+            android:id="@+id/chat_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Topic"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginStart="25dp"/>
+
+        <TextView
+            android:id="@+id/last_message_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lastmessage"
+            android:layout_below="@+id/chat_topic"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:layout_marginStart="20dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

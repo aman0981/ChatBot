@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".login.LoginPhoneNumber">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:src="@drawable/baseline_person"
+        app:tint="#F85959" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Enter  Your Name"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="bold" />
+
+
+
+    <EditText
+        android:id="@+id/login_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=" Username"
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:inputType="text"
+        android:background="@drawable/edit_text_rounded_corner"
+        android:elevation="5dp"/>
+
+
+    <Button
+        android:id="@+id/start_chat_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Start Chat"
+        android:backgroundTint="#F16060"
+        />
+
+    <ProgressBar
+        android:id="@+id/login_progress_bar"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="#F16060"/>
+
+
+
+
+</LinearLayout>
