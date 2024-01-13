@@ -12,14 +12,17 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.example.chatbot.login.LoginPhoneNumber
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 
 class HomeFragment : Fragment() {
 
 
 
+    val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,10 +70,16 @@ class HomeFragment : Fragment() {
                    shareApp()
                 }
 
-
+                R.id.chat_history -> {
+                    navController.navigate(R.id.topicList)
+                }
 
                 R.id.add_chat -> {
                     navController.navigate(R.id.chatFragment)
+                }
+
+                R.id.logout -> {
+                    signOut()
                 }
             }
             true
@@ -88,5 +97,13 @@ class HomeFragment : Fragment() {
         if (shareIntent.resolveActivity(requireContext().packageManager) != null) {
             startActivity(chooserIntent)
         }
+    }
+
+    private fun signOut(){
+        mAuth.signOut()
+        val intent = Intent(requireContext(), LoginPhoneNumber::class.java)
+        startActivity(intent)
+        requireActivity().finish()  // Optional: Finish the current activity if needed
+
     }
 }

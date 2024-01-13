@@ -1,5 +1,6 @@
 package com.example.chatbot
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +15,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-
 import com.example.chatbot.model.Message
 import com.google.android.material.textfield.TextInputEditText
 
@@ -23,8 +22,8 @@ import com.google.android.material.textfield.TextInputEditText
 class ChatFragment : Fragment() {
 
 
-    lateinit var  edtText: TextInputEditText
-    lateinit var  recyclerView: RecyclerView
+    lateinit var edtText: TextInputEditText
+    lateinit var recyclerView: RecyclerView
     lateinit var messageViewModel: MessageViewModel
     lateinit var send_btn: ImageButton
 
@@ -56,13 +55,14 @@ class ChatFragment : Fragment() {
         messageViewModel = ViewModelProvider(this)[MessageViewModel::class.java]
         val layoutManager = LinearLayoutManager(requireContext())
 
-        recyclerView.layoutManager= layoutManager
+        recyclerView.layoutManager = layoutManager
 
 
 
 
+        messageViewModel.getOrCreateChatroomModel()
 
-        messageViewModel.messageList.observe(viewLifecycleOwner){messages ->
+        messageViewModel.messageList.observe(viewLifecycleOwner) { messages ->
             val adapter = MessageAdapter(messages)
             recyclerView.adapter = adapter
 
@@ -78,11 +78,14 @@ class ChatFragment : Fragment() {
 
 
         send_btn.setOnClickListener {
-            if(edtText.text!!.isEmpty()){
-                Toast.makeText(requireContext(),"Please write your Question",Toast.LENGTH_SHORT).show()
-            }
-            else {
+            if (edtText.text!!.isEmpty()) {
+                Toast.makeText(requireContext(), "Please write your Question", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
                 val question = edtText.text.toString()
+
+                //sendMessage(question)
+
                 messageViewModel.addToChat(
                     question,
                     Message.SENT_BY_ME,
@@ -93,7 +96,6 @@ class ChatFragment : Fragment() {
 
 
             }
-
 
 
         }

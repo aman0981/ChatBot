@@ -24,6 +24,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_topicList"
+            app:destination="@id/topicList"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
 
     </fragment>
@@ -37,6 +44,24 @@
         android:name="com.example.chatbot.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/chatHistory"
+        android:name="com.example.chatbot.chathistory.ChatHistory"
+        android:label="fragment_chat_history"
+        tools:layout="@layout/fragment_chat_history" />
+    <fragment
+        android:id="@+id/topicList"
+        android:name="com.example.chatbot.chathistory.TopicList"
+        android:label="TopicList"
+        tools:layout="@layout/fragment_topic_list">
+        <action
+            android:id="@+id/action_topicList_to_chatHistory"
+            app:destination="@id/chatHistory"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
 
 
 </navigation>

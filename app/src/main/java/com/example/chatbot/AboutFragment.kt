@@ -13,10 +13,6 @@ import androidx.navigation.ui.setupWithNavController
 
 class AboutFragment : Fragment() {
 
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

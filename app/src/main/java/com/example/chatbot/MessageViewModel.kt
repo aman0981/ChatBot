@@ -7,11 +7,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.chatbot.chathistory.ChatMessageModel
+import com.example.chatbot.chathistory.ChatroomModel
 import com.example.chatbot.data.ApiClient
+import com.example.chatbot.login.FireBaseUtil
 
 import com.example.chatbot.model.CompletionRequest
 import com.example.chatbot.model.CompletionResponse
 import com.example.chatbot.model.Message
+import com.google.firebase.Timestamp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -34,10 +38,17 @@ class MessageViewModel (application: Application): AndroidViewModel(application)
     }
 
 
+    var chatRoomId: String = FireBaseUtil.getChatroomId(FireBaseUtil.currentUserId())
+    var chatroomModel: ChatroomModel? = null
+    var topicName: String = FireBaseUtil.currTopicName()
 
 
 
     fun addToChat(message : String , sentBy : String , timestamp : String){
+
+
+        sendMessage(message, sentBy)
+
         val currentList = _messageList.value ?: mutableListOf()
         currentList.add(Message(message,sentBy,timestamp))
         _messageList.postValue(currentList)
@@ -46,12 +57,12 @@ class MessageViewModel (application: Application): AndroidViewModel(application)
 
 
     private fun addResponse(response : String){
-        _messageList.value?.removeAt(_messageList.value?.size?.minus(1) ?: 0)
+//        _messageList.value?.removeAt(_messageList.value?.size?.minus(0) ?: 0)
         addToChat(response,Message.SENT_BY_BOT,getCurrentTimestamp())
     }
 
     fun callApi(question : String){
-        addToChat("Typing....",Message.SENT_BY_BOT,getCurrentTimestamp())
+        //addToChat("Typing....",Message.SENT_BY_BOT,getCurrentTimestamp())
 
 
 
@@ -83,7 +94,7 @@ class MessageViewModel (application: Application): AndroidViewModel(application)
                     }
                 }
             }else{
-                addResponse("Failed to get response ${response.errorBody()}")
+                addResponse("Failed to get response as API got Expired!! ${response.errorBody()}")
             }
         }
 
@@ -91,6 +102,43 @@ class MessageViewModel (application: Application): AndroidViewModel(application)
 
     fun getCurrentTimestamp(): String {
         return SimpleDateFormat("hh : mm a", Locale.getDefault()).format(Date())
+    }
+
+
+
+    fun sendMessage( message:String, sentBy: String){
+
+        chatroomModel?.let {
+            it.getlastMessageTimestamp=Timestamp.now()
+            //it.getlastMessage = message
+            FireBaseUtil.getChatroomReference(chatRoomId, topicName).set(it)
+
+            val chatMessageModel = ChatMessageModel(message, sentBy, Timestamp.now())
+            FireBaseUtil.getChatroomMessageReference(chatRoomId, topicName).add(chatMessageModel)
+                .addOnCompleteListener { task ->
+
+//                    if (task.isSuccessful) {
+//                        messageInput.setText("")
+//                    }
+                }
+
+        }
+    }
+    fun getOrCreateChatroomModel() {
+        FireBaseUtil.getChatroomReference(chatRoomId, topicName).get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                chatroomModel = task.result.toObject(ChatroomModel::class.java)
+                if (chatroomModel == null) {
+                    chatroomModel = ChatroomModel(
+                        topicName,
+                        chatRoomId,
+                        listOf(FireBaseUtil.currentUserId()),
+                        Timestamp.now()
+                    )
+                    FireBaseUtil.getChatroomReference(chatRoomId, topicName).set(chatroomModel!!)
+                }
+            }
+        }
     }
 
 

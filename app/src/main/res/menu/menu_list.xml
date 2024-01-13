@@ -24,5 +24,14 @@
         android:icon="@drawable/settings"
         />
 
+    <item
+        android:id="@+id/chat_history"
+        android:title="Chat History"
+        />
+
+
+    <item
+        android:id="@+id/logout"
+        android:title="LogOut"/>
 
 </menu>
