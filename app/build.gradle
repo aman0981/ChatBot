@@ -81,7 +81,14 @@ dependencies {
 
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
 
+//related to gemini Api
+    implementation("com.google.ai.client.generativeai:generativeai:0.2.2")
 
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    implementation("androidx.compose.material:material-icons-extended:1.5.4")
 
 
 }

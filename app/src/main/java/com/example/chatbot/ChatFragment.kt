@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatbot.model.Message
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.launch
 
 
 class ChatFragment : Fragment() {
@@ -92,7 +94,9 @@ class ChatFragment : Fragment() {
                     messageViewModel.getCurrentTimestamp()
                 )
                 edtText.setText("")
-                messageViewModel.callApi(question)
+
+                lifecycleScope.launch{
+                messageViewModel.callApi(question)}
 
 
             }

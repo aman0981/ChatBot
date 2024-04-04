@@ -7,12 +7,22 @@
     android:layout_marginStart="8dp"
     android:layout_marginTop="16dp"
     >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:text="BOT"
+        android:textStyle="bold"
+        android:textColor="#120101"
+        android:textSize="18sp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         app:cardElevation="0dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="12dp"
         android:backgroundTint="#84B0D3"
         app:cardCornerRadius="12dp"
