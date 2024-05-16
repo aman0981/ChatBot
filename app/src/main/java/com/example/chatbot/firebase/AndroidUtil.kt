@@ -1,4 +1,4 @@
-package com.example.chatbot.login
+package com.example.chatbot.firebase
 
 import android.content.Context
 import android.widget.Toast

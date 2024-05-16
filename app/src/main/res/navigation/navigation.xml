@@ -41,7 +41,7 @@
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.chatbot.ChatFragment"
+        android:name="com.example.chatbot.chatActivity.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment

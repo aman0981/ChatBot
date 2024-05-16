@@ -1,4 +1,4 @@
-package com.example.chatbot
+package com.example.chatbot.chatActivity
 
 
 import android.os.Bundle
@@ -16,6 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chatbot.R
 import com.example.chatbot.model.Message
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
@@ -30,8 +31,6 @@ class ChatFragment : Fragment() {
     lateinit var send_btn: ImageButton
 
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +38,6 @@ class ChatFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,35 +47,22 @@ class ChatFragment : Fragment() {
         val toolbar = requireView().findViewById<Toolbar>(R.id.toolbar)
             .setupWithNavController(navController, appBarConfiguration)
 
-
         edtText = view.findViewById(R.id.edtText)
         recyclerView = view.findViewById(R.id.recyclerChat)
         send_btn = view.findViewById(R.id.send_btn)
 
         messageViewModel = ViewModelProvider(this)[MessageViewModel::class.java]
         val layoutManager = LinearLayoutManager(requireContext())
-
         recyclerView.layoutManager = layoutManager
-
-
-
-
         messageViewModel.getOrCreateChatroomModel()
 
         messageViewModel.messageList.observe(viewLifecycleOwner) { messages ->
             val adapter = MessageAdapter(messages)
             recyclerView.adapter = adapter
-
             recyclerView.post {
                 messageViewModel._messageList.value?.size?.let { size ->
                     if (size > 0) {
-                        recyclerView.smoothScrollToPosition(size - 1)
-                    }
-                }
-            }
-
-        }
-
+                        recyclerView.smoothScrollToPosition(size - 1) } } } }
 
         send_btn.setOnClickListener {
             if (edtText.text!!.isEmpty()) {
@@ -85,9 +70,6 @@ class ChatFragment : Fragment() {
                     .show()
             } else {
                 val question = edtText.text.toString()
-
-                //sendMessage(question)
-
                 messageViewModel.addToChat(
                     question,
                     Message.SENT_BY_ME,
@@ -97,11 +79,7 @@ class ChatFragment : Fragment() {
 
                 lifecycleScope.launch{
                 messageViewModel.callApi(question)}
-
-
             }
-
-
         }
     }
 

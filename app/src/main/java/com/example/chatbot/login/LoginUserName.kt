@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import com.example.chatbot.MainActivity
 import com.example.chatbot.R
+import com.example.chatbot.firebase.FireBaseUtil
+import com.example.chatbot.firebase.UserModel
 import com.google.firebase.Timestamp
 
 class LoginUserName : AppCompatActivity() {
@@ -73,7 +75,7 @@ class LoginUserName : AppCompatActivity() {
 
     fun getUsername() {
         setInProgress(true)
-        FireBaseUtil.currentUserDetails().get().addOnCompleteListener{task->
+        FireBaseUtil.currentUserDetails().get().addOnCompleteListener{ task->
             setInProgress(false)
             if(task.isSuccessful){
                 userModel= task.getResult().toObject(UserModel::class.java)!!

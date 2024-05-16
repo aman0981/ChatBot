@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/background_1"
     android:orientation="vertical"
     tools:context=".login.LoginPhoneNumber">
 
@@ -40,7 +41,7 @@
 
     <Button
         android:id="@+id/start_chat_btn"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text="Start Chat"

@@ -1,4 +1,4 @@
-package com.example.chatbot.login
+package com.example.chatbot.firebase
 
 import com.google.firebase.Timestamp
 

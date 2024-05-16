@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/background_1"
     android:orientation="vertical"
     tools:context=".login.LoginPhoneNumber">
 
@@ -54,14 +55,15 @@
         android:layout_height="100dp"
         android:gravity="center_vertical"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/send_otp_btn"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="Send Otp"
+            android:layout_gravity="center"
             android:backgroundTint="#F16060"
-            />
+            android:text="Send Otp" />
 
         <ProgressBar
             android:id="@+id/login_progress_bar"

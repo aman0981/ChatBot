@@ -60,27 +60,16 @@ class HomeFragment : Fragment() {
 
 
             when (it.itemId) {
-               
-
                 R.id.about -> {
-                    navController.navigate(R.id.aboutFragment)
-                }
-
+                    navController.navigate(R.id.aboutFragment) }
                 R.id.share -> {
-                   shareApp()
-                }
-
-                R.id.chat_history -> {
-                    navController.navigate(R.id.topicList)
-                }
-
+                   shareApp() }
+//                R.id.chat_history -> {
+//                    navController.navigate(R.id.topicList) }
                 R.id.add_chat -> {
-                    navController.navigate(R.id.chatFragment)
-                }
-
+                    navController.navigate(R.id.chatFragment) }
                 R.id.logout -> {
-                    signOut()
-                }
+                    signOut() }
             }
             true
         }

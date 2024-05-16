@@ -1,6 +1,5 @@
 package com.example.chatbot.chathistory
 
-import android.app.DownloadManager.Query
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,9 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatbot.R
-import com.example.chatbot.login.FireBaseUtil
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.CollectionReference
+import com.example.chatbot.firebase.FireBaseUtil
 
 
 class TopicList : Fragment() {

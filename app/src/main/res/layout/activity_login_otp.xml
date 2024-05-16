@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/background_1"
     android:orientation="vertical"
     tools:context=".login.LoginPhoneNumber">
 
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="10dp"
-        android:text="Enter Otp Send to Your Number"
+        android:text="Enter Otp Sent to Your Number"
         android:textColor="@color/black"
         android:textSize="23sp"
         android:textStyle="bold" />
@@ -39,7 +40,7 @@
 
     <Button
         android:id="@+id/next_btn"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#F16060"
         android:layout_margin="15dp"
